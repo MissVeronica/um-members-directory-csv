@@ -13,6 +13,7 @@ Extension to Ultimate Member for defining Members Directory primary user list or
 2. Only first column used by this plugin for the Primary Directory sort order
 3. Column separator semicolon or comma
 4. Export User list with for example the "Export User Data" plugin to your spreadsheet application. https://wordpress.org/plugins/export-user-data/
+5. CSV File uploads folder: .../wp-content/uploads/ultimatemember/
 
 ## UM Textarea format
 1. Same format as CSV file ie two columns and one User ID and your comment one user per line
