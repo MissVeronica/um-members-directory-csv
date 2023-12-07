@@ -1,6 +1,11 @@
 # UM Members Directory CSV
 Extension to Ultimate Member for defining Members Directory primary user list order from a spreadsheet saved as a CSV file.
 
+Either a CSV file with comments for each user ID if the priotity list is very long. The user management of the list is faster and easier with spreadsheet input.
+An export plugin can be used for downloading the User IDs and username if required.
+
+A short priority list can be managed within UM settings with the same format as the CSV in a textarea.
+
 ## UM Settings -> General -> Users
 1. Members Directory CSV - Form name - Select the Member Directory Form name for Primary/Secondary User listing
 2. Members Directory CSV - User IDs input - Select the Member Directory input from CSV file name or Textbox for primary user IDs listing order
