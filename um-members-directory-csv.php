@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Ultimate Member - Members Directory CSV 
  * Description:     Extension to Ultimate Member for defining Members Directory primary user list order from a spreadsheet saved as a CSV file.
- * Version:         1.0.0
+ * Version:         1.1.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -10,7 +10,7 @@
  * Author URI:      https://github.com/MissVeronica
  * Text Domain:     ultimate-member
  * Domain Path:     /languages
- * UM version:      2.7.0
+ * UM version:      2.8.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -178,56 +178,59 @@ class Members_Directory_CSV {
             $directory_forms[$um_form->ID] = $um_form->post_title;
         }
 
-        $settings_structure['']['sections']['users']['fields'][] = array(
-                                'id'      => 'csv_users_form_id',
-                                'type'    => 'select',
-                                'options' => $directory_forms,
-                                'label'   => __( 'Members Directory CSV - Form name', 'ultimate-member' ),
-                                'tooltip' => __( 'Select the Member Directory Form name for Primary/Secondary User listing', 'ultimate-member' ),
-                                'size'    => 'medium',
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['title']       = __( 'Members Directory CSV', 'ultimate-member' );
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['description'] = __( 'Plugin version 1.1.0 - tested with UM 2.8.3', 'ultimate-member' );
+
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['fields'][] = array(
+                                'id'          => 'csv_users_form_id',
+                                'type'        => 'select',
+                                'options'     => $directory_forms,
+                                'label'       => __( 'Form name', 'ultimate-member' ),
+                                'description' => __( 'Select the Member Directory Form name for Primary/Secondary User listing', 'ultimate-member' ),
+                                'size'        => 'medium',
                             );
 
-        $settings_structure['']['sections']['users']['fields'][] = array(
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['fields'][] = array(
                                 'id'          => 'csv_users_input',
                                 'type'        => 'checkbox',
-                                'label'       => __( 'Members Directory CSV - User IDs input', 'ultimate-member' ),
-                                'tooltip'     => __( 'Select the Member Directory input from CSV file name or Textbox for primary user IDs listing order', 'ultimate-member' ),
+                                'label'       => __( 'User IDs input', 'ultimate-member' ),
+                                'description' => __( 'Select the Member Directory input from CSV file name or Textbox for primary user IDs listing order', 'ultimate-member' ),
                                 
-                            );                    
+                            );
 
-        $settings_structure['']['sections']['users']['fields'][] = array(
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['fields'][] = array(
                                 'id'          => 'csv_users_file_name',
                                 'type'        => 'text',
-                                'label'       => __( 'Members Directory CSV - Primary Order User IDs by CSV file', 'ultimate-member' ),
-                                'tooltip'     => __( 'Enter the Member Directory CSV file name for primary user listing order', 'ultimate-member' ),
+                                'label'       => __( 'Primary Order User IDs by CSV file', 'ultimate-member' ),
+                                'description' => __( 'Enter the Member Directory CSV file name for primary user listing order', 'ultimate-member' ),
                                 'size'        => 'medium',
                                 'conditional' => array( 'csv_users_input', '=', 0 ),
                             );
 
-        $settings_structure['']['sections']['users']['fields'][] = array(
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['fields'][] = array(
                                 'id'          => 'csv_users_textarea',
                                 'type'        => 'textarea',
-                                'label'       => __( 'Members Directory CSV - Primary Order User IDs by UM list', 'ultimate-member' ),
-                                'tooltip'     => __( 'Enter the Member Directory list for Primary User listing order. One user ID per line with optional username and comment separated by comma or semicolon.', 'ultimate-member' ),
+                                'label'       => __( 'Primary Order User IDs by UM list', 'ultimate-member' ),
+                                'description' => __( 'Enter the Member Directory list for Primary User listing order. One user ID per line with optional username and comment separated by comma or semicolon.', 'ultimate-member' ),
                                 'size'        => 'medium',
                                 'args'        => array( 'textarea_rows' => 10 ),
                                 'conditional' => array( 'csv_users_input', '=', 1 ),
                             );
 
-        $settings_structure['']['sections']['users']['fields'][] = array(
-                                'id'      => 'csv_users_orderby',
-                                'type'    => 'select',
-                                'options' => array( 'user_login'      => __( 'Username', 'ultimate-member' ),
-                                                    'registered_asc'  => __( 'Old users first', 'ultimate-member' ),
-                                                    'registered_desc' => __( 'New users first', 'ultimate-member' ),
-                                                    'display_name'    => __( 'Display name', 'ultimate-member' ),
-                                                    'first_name'      => __( 'First name', 'ultimate-member' ),
-                                                    'last_name'       => __( 'Last name', 'ultimate-member' ),
-                                                    'user_nicename'   => __( 'Nickname', 'ultimate-member' ),
+        $settings_structure['']['sections']['users']['form_sections']['csv_users']['fields'][] = array(
+                                'id'         => 'csv_users_orderby',
+                                'type'       => 'select',
+                                'options'    => array( 'user_login'      => __( 'Username', 'ultimate-member' ),
+                                                       'registered_asc'  => __( 'Old users first', 'ultimate-member' ),
+                                                       'registered_desc' => __( 'New users first', 'ultimate-member' ),
+                                                       'display_name'    => __( 'Display name', 'ultimate-member' ),
+                                                       'first_name'      => __( 'First name', 'ultimate-member' ),
+                                                       'last_name'       => __( 'Last name', 'ultimate-member' ),
+                                                       'user_nicename'   => __( 'Nickname', 'ultimate-member' ),
                                                     ),
-                                'label'   => __( 'Members Directory CSV - Secondary Order sorting Users by', 'ultimate-member' ),
-                                'tooltip' => __( 'Select the Member Directory Secondary sorting order except Primary Users', 'ultimate-member' ),
-                                'size'    => 'medium',
+                                'label'       => __( 'Secondary Order sorting Users by', 'ultimate-member' ),
+                                'description' => __( 'Select the Member Directory Secondary sorting order except Primary Users', 'ultimate-member' ),
+                                'size'        => 'medium',
                             );
 
         return $settings_structure;
@@ -236,3 +239,4 @@ class Members_Directory_CSV {
 }
 
 new Members_Directory_CSV();
+
