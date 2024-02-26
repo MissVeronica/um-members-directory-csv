@@ -34,7 +34,7 @@ A short priority list can be managed within UM settings with the same format as 
 2. https://wordpress.org/plugins/say-what/
 
 ## Updates
-None
+1. Version 1.1.0 Updated for UM 2.8.3
 
 ## Installation
 1. Install by downloading the plugin ZIP file and install as a new Plugin, which you upload in WordPress -> Plugins -> Add New -> Upload Plugin.
